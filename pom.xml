@@ -52,7 +52,8 @@
 		</dependency>
 
 		<!-- compile dependencies -->
-                 <!-- new entry for comment -->  
+                 <!-- new entry for comment -->
+		 <!-- new entry for data entry -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
