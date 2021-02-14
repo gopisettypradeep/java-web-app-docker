@@ -52,7 +52,7 @@
 		</dependency>
 
 		<!-- compile dependencies -->
-
+                 <!-- new entry for comment -->  
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
