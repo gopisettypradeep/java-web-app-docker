@@ -13,25 +13,25 @@ node{
     
     
     stage('Build Docker Image'){
-        sh 'docker build -t dockerhandson/java-web-app .'
+        sh 'docker build -t gopisettypradeep/java-web-app .'
     }
     
     stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'Docker_Hub_Pwd', variable: 'Docker_Hub_Pwd')]) {
-          sh "docker login -u dockerhandson -p ${Docker_Hub_Pwd}"
+        withCredentials([string(credentialsId: 'docker_hubpass', variable: 'dockerpassvar')]) {
+          sh "docker login -u gopisettypradeep -p ${dockerpassvar}"
         }
-        sh 'docker push dockerhandson/java-web-app'
+        sh 'docker push gopisettypradeep/java-web-app'
      }
      
       stage('Run Docker Image In Dev Server'){
         
-        def dockerRun = ' docker run  -d -p 8080:8080 --name java-web-app dockerhandson/java-web-app'
+        def dockerRun = ' docker run  -d -p 8080:8080 --name java-web-app gopisettypradeep/java-web-app'
          
          sshagent(['DOCKER_SERVER']) {
-          sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.72 docker stop java-web-app || true'
-          sh 'ssh  ubuntu@172.31.20.72 docker rm java-web-app || true'
-          sh 'ssh  ubuntu@172.31.20.72 docker rmi -f  $(docker images -q) || true'
-          sh "ssh  ubuntu@172.31.20.72 ${dockerRun}"
+          sh 'ssh -o StrictHostKeyChecking=no ubuntu@192.168.56.12 docker stop java-web-app || true'
+          sh 'ssh  ubuntu@192.168.56.12 docker rm java-web-app || true'
+          sh 'ssh  ubuntu@192.168.56.12 docker rmi -f  $(docker images -q) || true'
+          sh "ssh  ubuntu@192.168.56.12 ${dockerRun}"
        }
        
     }
