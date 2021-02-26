@@ -1,5 +1,5 @@
 node{
-    currentBuild.displayName = "java-web-app-# + ${BUILD_NUMBER}, branch ${BRANCH}"
+    currentBuild.displayName = "${BUILD_NUMBER}, branch ${BRANCH}"
     stage('SCM Checkout'){
         git url: 'https://github.com/gopisettypradeep/java-web-app-docker.git',branch: 'master'
     }
