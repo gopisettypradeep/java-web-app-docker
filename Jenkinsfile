@@ -28,11 +28,7 @@ node{
         def dockerRun = ' docker run  -d -p 8080:8080 --name java-web-app gopisettypradeep/java-web-app'
          
          sshagent(['DOCKER_SERVER']) {
-          sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.12 uname -a'
-          sh sudo 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.12 docker stop java-web-app || true'
-          sh 'ssh vagrant@192.168.56.12 docker rm java-web-app || true'
-          sh 'ssh vagrant@192.168.56.12 docker rmi -f  $(docker images -q) || true'
-          sh "ssh vagrant@192.168.56.12 ${dockerRun}"
+             sh "ssh -o StrictHostKeyChecking=no vagrant@192.168.56.12 ${dockerRun} "
        }
        
     }
