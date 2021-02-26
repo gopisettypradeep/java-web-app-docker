@@ -32,7 +32,7 @@ node{
              sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.12 sudo docker stop java-web-app || true'
              sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.12 sudo docker rm java-web-app || true'
              sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.12 docker rmi -f  $(docker images -q) || true'
-             sh "ssh vagrant@192.168.56.12 ${dockerRun}"
+             sh "ssh vagrant@192.168.56.12 sudo ${dockerRun}"
        }
        
     }
