@@ -25,7 +25,7 @@ node{
      
       stage('Run Docker Image In Dev Server'){
         
-        def dockerRun = ' docker run  -d -p 8080:8080 --name java-web-app gopisettypradeep/java-web-app'
+        def dockerRun = ' docker run  -d -p 8084:8080 --name java-web-app gopisettypradeep/java-web-app'
          
          sshagent(['sshkey_details']) {
              
